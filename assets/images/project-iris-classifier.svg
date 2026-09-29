@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080b11"/>
+      <stop offset="50%" stop-color="#0d131f"/>
+      <stop offset="100%" stop-color="#05080e"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+
+  <!-- Subtle Cyber Grid -->
+  <g opacity="0.06">
+    <pattern id="grid_project_iris_classifier_svg" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#38bdf8" stroke-width="1"/>
+    </pattern>
+    <rect width="800" height="450" fill="url(#grid_project_iris_classifier_svg)"/>
+  </g>
+
+  <!-- Ambient Light Orbs -->
+  <circle cx="100" cy="60" r="160" fill="#10b981" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="700" cy="380" r="180" fill="#00f2fe" opacity="0.06" filter="url(#glow)"/>
+
+  <!-- Window Chrome Header -->
+  <rect x="15" y="15" width="770" height="35" rx="8" fill="#0d1424" stroke="#1e293b"/>
+  <circle cx="35" cy="32" r="5" fill="#ef4444"/>
+  <circle cx="50" cy="32" r="5" fill="#f59e0b"/>
+  <circle cx="65" cy="32" r="5" fill="#10b981"/>
+  
+  <text x="400" y="36" fill="#94a3b8" font-size="11" font-family="'JetBrains Mono', monospace" text-anchor="middle">Iris Flower Species Classifier</text>
+  <rect x="670" y="22" width="100" height="20" rx="10" fill="rgba(56, 189, 248, 0.15)"/>
+  <text x="720" y="35" fill="#38bdf8" font-size="10" font-weight="700" text-anchor="middle" font-family="monospace">ACTIVE</text>
+
+  <!-- Render project-specific content -->
+  
+      <!-- Top ML Banner -->
+      <g transform="translate(30, 55)">
+        <rect width="740" height="50" rx="8" fill="#0f172a" stroke="#1e293b"/>
+        <text x="25" y="31" fill="#f8fafc" font-size="14" font-weight="700" font-family="sans-serif">Iris Botanical Classification Engine</text>
+        <rect x="520" y="12" width="200" height="26" rx="13" fill="rgba(16, 185, 129, 0.15)"/>
+        <text x="620" y="29" fill="#10b981" font-size="11" font-weight="700" text-anchor="middle" font-family="'JetBrains Mono'">Accuracy: 98.67% (KNN/SVM)</text>
+      </g>
+
+      <!-- Main Columns -->
+      <!-- Left: Scatter Plot Matrix Simulation -->
+      <g transform="translate(30, 120)">
+        <rect width="430" height="300" rx="12" fill="#0f172a" stroke="#1e293b"/>
+        <text x="25" y="28" fill="#94a3b8" font-size="11" font-weight="700" font-family="sans-serif">FEATURE SPACE: SEPAL LENGTH vs PETAL LENGTH</text>
+
+        <!-- Plot Area -->
+        <rect x="40" y="45" width="360" height="200" fill="#090e1a" stroke="#1e293b"/>
+        <!-- Grid lines -->
+        <line x1="40" y1="95" x2="400" y2="95" stroke="#1e293b" stroke-dasharray="2,2"/>
+        <line x1="40" y1="145" x2="400" y2="145" stroke="#1e293b" stroke-dasharray="2,2"/>
+        <line x1="40" y1="195" x2="400" y2="195" stroke="#1e293b" stroke-dasharray="2,2"/>
+        <line x1="130" y1="45" x2="130" y2="245" stroke="#1e293b" stroke-dasharray="2,2"/>
+        <line x1="220" y1="45" x2="220" y2="245" stroke="#1e293b" stroke-dasharray="2,2"/>
+        <line x1="310" y1="45" x2="310" y2="245" stroke="#1e293b" stroke-dasharray="2,2"/>
+
+        <!-- Scatter Cluster 1: Setosa (Cyan) -->
+        <circle cx="70" cy="210" r="5" fill="#00f2fe"/>
+        <circle cx="85" cy="220" r="5" fill="#00f2fe"/>
+        <circle cx="95" cy="195" r="5" fill="#00f2fe"/>
+        <circle cx="110" cy="205" r="5" fill="#00f2fe"/>
+        <circle cx="75" cy="190" r="5" fill="#00f2fe"/>
+        <circle cx="120" cy="215" r="5" fill="#00f2fe"/>
+
+        <!-- Scatter Cluster 2: Versicolor (Green) -->
+        <circle cx="210" cy="140" r="5" fill="#10b981"/>
+        <circle cx="230" cy="130" r="5" fill="#10b981"/>
+        <circle cx="245" cy="155" r="5" fill="#10b981"/>
+        <circle cx="260" cy="135" r="5" fill="#10b981"/>
+        <circle cx="220" cy="160" r="5" fill="#10b981"/>
+        <circle cx="275" cy="145" r="5" fill="#10b981"/>
+
+        <!-- Scatter Cluster 3: Virginica (Yellow/Orange) -->
+        <circle cx="320" cy="80" r="5" fill="#f59e0b"/>
+        <circle cx="340" cy="70" r="5" fill="#f59e0b"/>
+        <circle cx="355" cy="95" r="5" fill="#f59e0b"/>
+        <circle cx="370" cy="75" r="5" fill="#f59e0b"/>
+        <circle cx="330" cy="100" r="5" fill="#f59e0b"/>
+        <circle cx="385" cy="85" r="5" fill="#f59e0b"/>
+
+        <!-- Legend -->
+        <g transform="translate(40, 265)">
+          <circle cx="10" cy="10" r="4" fill="#00f2fe"/>
+          <text x="22" y="14" fill="#f8fafc" font-size="10">Setosa</text>
+          <circle cx="110" cy="10" r="4" fill="#10b981"/>
+          <text x="122" y="14" fill="#f8fafc" font-size="10">Versicolor</text>
+          <circle cx="230" cy="10" r="4" fill="#f59e0b"/>
+          <text x="242" y="14" fill="#f8fafc" font-size="10">Virginica</text>
+        </g>
+      </g>
+
+      <!-- Right: Live Prediction Sliders & Inference -->
+      <g transform="translate(480, 120)">
+        <rect width="290" height="300" rx="12" fill="#0f172a" stroke="#1e293b"/>
+        <text x="20" y="28" fill="#94a3b8" font-size="11" font-weight="700" font-family="sans-serif">MODEL INPUT PARAMETERS</text>
+
+        <!-- Slider 1 -->
+        <text x="20" y="55" fill="#f8fafc" font-size="11">Sepal Length: 5.1 cm</text>
+        <rect x="20" y="65" width="250" height="6" rx="3" fill="#1e293b"/>
+        <rect x="20" y="65" width="130" height="6" rx="3" fill="#10b981"/>
+        <circle cx="150" cy="68" r="6" fill="#10b981"/>
+
+        <!-- Slider 2 -->
+        <text x="20" y="95" fill="#f8fafc" font-size="11">Sepal Width: 3.5 cm</text>
+        <rect x="20" y="105" width="250" height="6" rx="3" fill="#1e293b"/>
+        <rect x="20" y="105" width="170" height="6" rx="3" fill="#10b981"/>
+        <circle cx="190" cy="108" r="6" fill="#10b981"/>
+
+        <!-- Slider 3 -->
+        <text x="20" y="135" fill="#f8fafc" font-size="11">Petal Length: 1.4 cm</text>
+        <rect x="20" y="145" width="250" height="6" rx="3" fill="#1e293b"/>
+        <rect x="20" y="145" width="60" height="6" rx="3" fill="#10b981"/>
+        <circle cx="80" cy="148" r="6" fill="#10b981"/>
+
+        <!-- Inferred Result Box -->
+        <rect x="20" y="180" width="250" height="100" rx="8" fill="#091424" stroke="#10b981" stroke-width="1.5"/>
+        <text x="35" y="205" fill="#94a3b8" font-size="10" font-weight="700">PREDICTED CLASS</text>
+        <text x="35" y="235" fill="#00f2fe" font-size="20" font-weight="900" font-family="'JetBrains Mono'">Iris-Setosa</text>
+        <text x="35" y="258" fill="#10b981" font-size="11" font-weight="600">Confidence: 99.4% certainty</text>
+      </g>
+    
+
+  <!-- Outer Glass Frame Stroke -->
+  <rect x="15" y="15" width="770" height="420" rx="10" fill="none" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1"/>
+</svg>
