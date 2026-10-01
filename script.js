@@ -433,38 +433,69 @@ function initNavigation() {
     updateActiveNavLink();
   }, { passive: true });
 
-  // Mobile menu toggle
+  // Mobile menu toggle & overlay handler
+  const mobileDrawerOverlay = document.getElementById('mobile-drawer-overlay');
+
+  const closeDrawer = () => {
+    if (!mobileToggleBtn || !mobileDrawer) return;
+    mobileToggleBtn.setAttribute('aria-expanded', 'false');
+    mobileToggleBtn.classList.remove('active');
+    mobileDrawer.classList.remove('active');
+    mobileDrawer.setAttribute('aria-hidden', 'true');
+    if (mobileDrawerOverlay) {
+      mobileDrawerOverlay.classList.remove('active');
+    }
+    document.body.style.overflow = '';
+  };
+
+  const openDrawer = () => {
+    if (!mobileToggleBtn || !mobileDrawer) return;
+    mobileToggleBtn.setAttribute('aria-expanded', 'true');
+    mobileToggleBtn.classList.add('active');
+    mobileDrawer.classList.add('active');
+    mobileDrawer.setAttribute('aria-hidden', 'false');
+    if (mobileDrawerOverlay) {
+      mobileDrawerOverlay.classList.add('active');
+    }
+    document.body.style.overflow = 'hidden';
+  };
+
   if (mobileToggleBtn && mobileDrawer) {
-    mobileToggleBtn.addEventListener('click', () => {
+    mobileToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       const isExpanded = mobileToggleBtn.getAttribute('aria-expanded') === 'true';
-      mobileToggleBtn.setAttribute('aria-expanded', !isExpanded);
-      mobileToggleBtn.classList.toggle('active');
-      mobileDrawer.classList.toggle('active');
-      mobileDrawer.setAttribute('aria-hidden', isExpanded);
-      document.body.style.overflow = isExpanded ? '' : 'hidden';
+      if (isExpanded) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
     });
 
-    // Close mobile drawer when a link is clicked
+    // Close mobile drawer when any link is clicked
     mobileNavLinks.forEach(link => {
       link.addEventListener('click', () => {
-        mobileToggleBtn.setAttribute('aria-expanded', 'false');
-        mobileToggleBtn.classList.remove('active');
-        mobileDrawer.classList.remove('active');
-        mobileDrawer.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
+        closeDrawer();
       });
     });
+
+    // Close when clicking overlay
+    if (mobileDrawerOverlay) {
+      mobileDrawerOverlay.addEventListener('click', closeDrawer);
+    }
 
     // Close when clicking outside drawer
     document.addEventListener('click', (e) => {
       if (mobileDrawer.classList.contains('active') && 
           !mobileDrawer.contains(e.target) && 
           !mobileToggleBtn.contains(e.target)) {
-        mobileToggleBtn.setAttribute('aria-expanded', 'false');
-        mobileToggleBtn.classList.remove('active');
-        mobileDrawer.classList.remove('active');
-        mobileDrawer.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
+        closeDrawer();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileDrawer.classList.contains('active')) {
+        closeDrawer();
       }
     });
   }
